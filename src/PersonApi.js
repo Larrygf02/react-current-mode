@@ -4,6 +4,12 @@ const fetchPerson = () => {
         .then(x => x.results[0]);
 };
 
+export const randomNumber = async () => {
+    return new Promise((resolve => {
+      setTimeout(() => resolve(Math.random()), 3000)  
+    }))
+}
+
 const wrapPromise = (promise) => {
     let status = 'pending';
     let result = '';
@@ -29,6 +35,7 @@ const wrapPromise = (promise) => {
 
 export const createResourse = () => {
     return {
-        person: wrapPromise(fetchPerson())
+        person: wrapPromise(fetchPerson()),
+        num: wrapPromise(randomNumber())
     }
 }
